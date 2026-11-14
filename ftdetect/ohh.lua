@@ -1,4 +1,4 @@
--- Filetype detection for .ohh .
+-- Filetype detection for .ohh.
 vim.filetype.add({
   extension = {
     ohh = "ohh",

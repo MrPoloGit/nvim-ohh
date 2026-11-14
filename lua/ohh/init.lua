@@ -5,7 +5,7 @@
 -- grammar + its canonical queries/) for highlighting, and ohh-ls itself
 -- for diagnostics/hover/completion via Neovim's built-in LSP client.
 -- Simpler than nvim-phh in exactly one way: OHH has only one grammar, no
--- second "actions" grammar to register .
+-- second "actions" grammar to register.
 --
 -- By design, this module does nothing on require(); call M.setup() from
 -- your config.
