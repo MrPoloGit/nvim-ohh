@@ -11,7 +11,7 @@ completion via Neovim's built-in LSP client.
 ```lua
 require("ohh").setup({
   server_path = "/absolute/path/to/ohh-ls/build/ohh-ls", -- default: "ohh-ls" on PATH
-  registry_path = "/absolute/path/to/ohh/registry", -- required, no default
+  registry_path = "/absolute/path/to/ohh-data/registry", -- required, no default
   -- grammar_path defaults to the sibling tree-sitter-ohh checkout used
   -- throughout this project; override if yours lives elsewhere.
 })
@@ -77,12 +77,12 @@ back the same Mach-O arm64 library already bundled.
 nvim --headless --clean -u NONE -l nvim-ohh/test/headless_test.lua
 ```
 
-drives the real plugin against the real corpus (`../ohh/corpus/`) inside
+drives the real plugin against the real corpus (`../ohh-data/corpus/`) inside
 an actual (headless) Neovim instance. For every valid and invalid
 fixture, it opens the file, waits for the real `ohh-ls` process to attach
 and respond, and checks: correct `filetype`, the `ohh-ls` LSP client
 actually attached, diagnostics matching the corpus's own zero/non-zero
-expectations (`ohh/corpus/README.md`), and the tree-sitter highlighter
+expectations (`ohh-data/corpus/README.md`), and the tree-sitter highlighter
 active. It also exercises `hover` on the real spec-sourced example's
 `game_type` field through the same LSP client. **25/25 checks pass, on
 the first real run**, same result `nvim-phh` got, confirming the

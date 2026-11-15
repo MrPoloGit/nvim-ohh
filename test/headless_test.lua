@@ -19,7 +19,7 @@ dofile(root .. "/nvim-ohh/ftdetect/ohh.lua")
 local ohh = require("ohh")
 ohh.setup({
   server_path = root .. "/ohh-ls/build/ohh-ls",
-  registry_path = root .. "/ohh/registry",
+  registry_path = root .. "/ohh-data/registry",
 })
 
 check("setup() recorded state", ohh._state ~= nil)
@@ -46,8 +46,8 @@ local function open_and_wait(path)
   return bufnr
 end
 
-local valid_files = vim.fn.glob(root .. "/ohh/corpus/valid/*.ohh", false, true)
-local invalid_files = vim.fn.glob(root .. "/ohh/corpus/invalid/*.ohh", false, true)
+local valid_files = vim.fn.glob(root .. "/ohh-data/corpus/valid/*.ohh", false, true)
+local invalid_files = vim.fn.glob(root .. "/ohh-data/corpus/invalid/*.ohh", false, true)
 
 for _, path in ipairs(valid_files) do
   local bufnr = open_and_wait(path)
@@ -69,7 +69,7 @@ end
 -- and vscode-ohh/test already know lands there: line 6 (0-indexed),
 -- inside "Holdem".
 do
-  local path = root .. "/ohh/corpus/valid/holdem-cash-pokerstars.ohh"
+  local path = root .. "/ohh-data/corpus/valid/holdem-cash-pokerstars.ohh"
   local bufnr = open_and_wait(path)
   local clients = vim.lsp.get_clients({ bufnr = bufnr, name = "ohh-ls" })
   if #clients > 0 then
